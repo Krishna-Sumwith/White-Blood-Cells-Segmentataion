@@ -15,3 +15,16 @@ This project aims to:
 - Provide an inference API using FastAPI
 - Containerize the deployment using Docker
 
+## WBC Classes
+The dataset contains 10 white blood cell classes
+|Class | Description |
+|Blast Cell    | |
+|Promyelocyte  | |
+|Myelocyte     | |
+|Metamyelocyte | |
+|Band Cell     | |
+|Neutrophil    | |
+|Lymphocyte    | |
+|Monocyte      | |
+|Eosinophil    | |
+|Basophil      | |
