@@ -197,3 +197,32 @@ Input:
 
 Output:
 - The JSON file contains the number of detections, along with the bounding box, confidence score, class ID, and mask for each detection.
+
+## Project Structure
+```
+White-Blood-Cells-Segmentation 
+│
+├── app/ 
+│ ├── main.py
+│
+├── deploy/ 
+│ ├── inference.py
+│ ├── utils.py
+│
+├── inference_and_benchmark scripts/ 
+│ ├── ONNX_benchmark.ipynb
+│ ├── Pytorch_ONNX_inference.ipynb
+│ ├── tensorRT_benchmark.ipynb
+|
+├── sample predictions/       # sample output images
+|
+├── training/
+│ ├── wbc_rfdetr.ipynb
+│
+├── .gitattributes
+├── .gitignore
+├── Dockerfile
+├── LICENSE
+├── README.md
+├── requirements.txt
+```
