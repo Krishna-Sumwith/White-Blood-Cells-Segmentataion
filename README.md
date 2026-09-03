@@ -27,7 +27,7 @@ This project aims to:
 ## Dataset
 **WBC Instance Segmentation & Classification**\
 The project uses a Kaggle dataset containing peripheral blood smear images with instance segmentation annotations.
-🔗[Download Dataset](https://www.kaggle.com/datasets/jimutbahanpal/wbc-instance-segmentation-and-classification)\
+🔗[Download Dataset](https://www.kaggle.com/datasets/jimutbahanpal/wbc-instance-segmentation-and-classification)  
 
 **WBC Classes**\
 The dataset consists of ten distinct peripheral blood smear classes, each featuring multiple multi-class white blood cells per slide.
