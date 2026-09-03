@@ -94,6 +94,26 @@ The selected architecture is:
 - Normalization Mean = [0.485,0.456,0.406]
 - Normalization Std = [0.229,0.224,0.225]
 
+## Model Optimization
+To improve inference performance
+1. Pytorch model exported to ONNX
+2. ONNX model converted to TensorRT engine
+3. Quantization applied to reduce latency
+
+RF-Deter internally supports ONNX-based conversation processing through its built-in conversation support command model.export().  
+The ONNX model was executed using the CPUExecutionProvider.  
+The exported ONNX model preserved the same evaluation metrics as Pytorch model.
+
+## Model Conversion: ONNX to TensorRT
+FP32 Engine
+```
+trtexec --onnx=ONNX_model.onnx --saveEngine=TensorRT_model.engine
+```
+FP16 Engine
+```
+trtexec --onnx=ONNX_model.onnx --saveEngine=TensorRT_model_fp16.engine --fp16
+```
+
 ## Model Performance
 The trained PyTorch model achieved the following validation metrics
 |  Metric  |Score |
@@ -105,26 +125,6 @@ The trained PyTorch model achieved the following validation metrics
 |Recall    |0.9310|
 |F1-Score  |0.9030|
 
-## Model Optimization
-To improve inference performance
-1. Pytorch model exported to ONNX
-2. ONNX model converted to TensorRT engine
-3. Quantization applied to reduce latency
-
-RF-Deter internally supports ONNX-based conversation processing through its built-in conversation support command model.export().  
-The ONNX model was executed using the CPUExecutionProvider.  
-The exported ONNX model preserved the same evaluation metrics as Pytorch model.
-
-## Model Conversion from ONNX to TensorRT
-FP32 Engine
-```
-trtexec --onnx=ONNX_model.onnx --saveEngine=TensorRT_model.engine
-```
-FP16 Engine
-```
-trtexec --onnx=ONNX_model.onnx --saveEngine=TensorRT_model_fp16.engine --fp16
-```
-
 ### Model Benchmark
 | Model       | Precision |   Size   |Images Tested| Total Time | Latency Time (ms)   |  FPS   |
 |-------------|-----------|----------|-------------|------------|---------------------|--------|
@@ -133,6 +133,17 @@ trtexec --onnx=ONNX_model.onnx --saveEngine=TensorRT_model_fp16.engine --fp16
 | ONNX        | FP32      |133,201 KB|     117     | 86.8964 sec| 742.70              |  1.35  |
 | TensorRT    | FP32      |125,415 KB|      20     |545.7800 ms | 27.29               | 36.65  |
 | TensorRT    | FP16      | 64,518 KB|      20     |194.8700 ms | 9.74                | 102.62 |
+
+## Sample Predictions
+<p align="center">
+  <img src="sample predictions/wbc_prediction-1.jpg" width="300">
+  <img src="sample predictions/wbc_prediction-4.jpg" width="300">
+</p>
+
+<p align="center">
+  <img src="sample predictions/wbc_prediction-6.jpg" width="300">
+  <img src="sample predictions/wbc_prediction-7.jpg" width="300">
+</p>
 
 ## Deployment
 The ONNX model was deployed using
